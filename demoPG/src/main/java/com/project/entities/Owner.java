@@ -1,14 +1,22 @@
 package com.project.entities;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
-
-public class Owner {
+@Entity
+public class Owner implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -49,6 +57,15 @@ public class Owner {
 	@Column(name="profile_image")
 	@Size(max = 200)
 	private String profile_image;
+	@OneToMany(mappedBy="id")
+	List<Owner> owner;
+	
+	public List<Owner> getOwner() {
+		return owner;
+	}
+	public void setOwner(List<Owner> owner) {
+		this.owner = owner;
+	}
 	public Owner() {
 		
 	}
