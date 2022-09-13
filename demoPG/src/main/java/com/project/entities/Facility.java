@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -64,7 +66,6 @@ public class Facility {
 	@Size(max=1)
 	@Value("0")
 	private int laundry;
-	
 	public Facility() {
 		
 	}

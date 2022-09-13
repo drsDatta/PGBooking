@@ -18,7 +18,8 @@ import javax.validation.constraints.Size;
 @Entity
 public class Owner implements Serializable{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	//@Column(name="owner_id")
 	private int id;
 	
 	@Column(name="first_name",nullable = false)
@@ -57,15 +58,48 @@ public class Owner implements Serializable{
 	@Column(name="profile_image")
 	@Size(max = 200)
 	private String profile_image;
-	@OneToMany(mappedBy="id")
-	List<Owner> owner;
+	@OneToMany(targetEntity = Pg.class,cascade = CascadeType.ALL)
+	@JoinColumn(name="owner_id",referencedColumnName ="id")
+	private Set pg;
 	
-	public List<Owner> getOwner() {
-		return owner;
+//	@OneToMany(mappedBy = "id")
+//	List<Owner> owner;
+	
+	
+	public Owner(int id, @Size(max = 50, message = "This is required") String first_name,
+			@Size(max = 50, message = "This is required") String last_name,
+			@Size(max = 80, message = "This is required") String email,
+			@Size(max = 12, message = "This is required") String phone_no,
+			@Size(message = "This is required") Date birth_date,
+			@Size(max = 20, message = "This is required") String gender,
+			@Size(max = 50, message = "This is required") String address,
+			@Size(max = 50, message = "This is required") String city,
+			@Size(max = 20, message = "This is required") String state,
+			@Size(max = 25, message = "This is required") String country,
+			@Size(max = 512, message = "This is required") String password, @Size(max = 200) String profile_image,
+			Owner owner) {
+		super();
+		this.id = id;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.phone_no = phone_no;
+		this.birth_date = birth_date;
+		this.gender = gender;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+		this.password = password;
+		this.profile_image = profile_image;
+		//this.owner = (List<Owner>) owner;
 	}
-	public void setOwner(List<Owner> owner) {
-		this.owner = owner;
-	}
+//	public List<Owner> getOwner() {
+//		return owner;
+//	}
+//	public void setOwner(List<Owner> owner) {
+//		this.owner = owner;
+//	}
 	public Owner() {
 		
 	}

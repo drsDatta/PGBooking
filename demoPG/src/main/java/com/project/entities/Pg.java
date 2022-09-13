@@ -1,6 +1,7 @@
 package com.project.entities;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -36,18 +38,50 @@ public class Pg {
 	@Column(name="pincode",nullable = false)
 	@Size(max = 6, message = "This is required")
 	private int pincode;
-//	@OneToMany(targetEntity = Owner.class,cascade = CascadeType.ALL)
-//	@JoinColumn(name="owner_id",referencedColumnName ="id")
-	@ManyToOne
-    @JoinColumn(name="owner", nullable=false)
-	Owner owner_id;
+	 @OneToOne(cascade = CascadeType.ALL)
+	    @JoinColumn(name = "facility_id", referencedColumnName = "id")
+	    private Facility facility;
+	 @OneToMany(targetEntity = Room.class,cascade = CascadeType.ALL)
+		@JoinColumn(name="pg_id",referencedColumnName ="id")
+		private Set pg;
 	
+//	@ManyToOne()
+//    @JoinColumn(name="owner",nullable=false)
+//	Owner owner_id;
+	
+	@Override
+	public String toString() {
+		return "Pg [id=" + id + ", name=" + name + ", address=" + address + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", pincode=" + pincode + ", owner_id="  + "]";
+	}
 	public Pg(int id, @Size(max = 20, message = "This is required") String name,
 			@Size(max = 50, message = "This is required") String address,
 			@Size(max = 20, message = "This is required") String city,
 			@Size(max = 20, message = "This is required") String state,
 			@Size(max = 20, message = "This is required") String country,
-			@Size(max = 6, message = "This is required") int pincode, Owner owner) {
+			@Size(max = 6, message = "This is required") int pincode,  Owner owner_id) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+		this.pincode = pincode;
+		//this.owner_id = owner_id;
+	}
+//	public Owner getOwner_id() {
+//		return owner_id;
+//	}
+//	public void setOwner_id(Owner owner_id) {
+//		this.owner_id = owner_id;
+//	}
+	public Pg(int id, @Size(max = 20, message = "This is required") String name,
+			@Size(max = 50, message = "This is required") String address,
+			@Size(max = 20, message = "This is required") String city,
+			@Size(max = 20, message = "This is required") String state,
+			@Size(max = 20, message = "This is required") String country,
+			@Size(max = 6, message = "This is required") int pincode) {
 		super();
 		this.id = id;
 		this.name = name;

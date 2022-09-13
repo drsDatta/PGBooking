@@ -1,10 +1,15 @@
 package com.project.entities;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -34,6 +39,7 @@ public class Room {
 	@Size(max=1)
 	private int status;
 	//private int pg_id;
+	 
 	
 	public Room() {
 		
