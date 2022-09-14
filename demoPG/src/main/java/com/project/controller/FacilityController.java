@@ -31,11 +31,11 @@ public class FacilityController {
 		return this.facilityExImpl.getFacility(facilityRepository);
 	}
 	@RequestMapping("/getFacility/{id}")
-	public Facility getUser(@PathVariable String id) {
+	public Facility getFacility(@PathVariable String id) {
 		return this.facilityExImpl.getFacilityById(facilityRepository, Integer.parseInt(id));
 	}
 	@DeleteMapping("/removeFacility/{id}")
-	public String removeUser(@PathVariable String id) {
+	public String removeFacility(@PathVariable String id) {
 		if(id!=null) {
 			return this.facilityExImpl.removeFacilityById(facilityRepository, Integer.parseInt(id));
 		}else {

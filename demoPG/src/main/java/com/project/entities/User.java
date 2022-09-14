@@ -3,12 +3,16 @@ package com.project.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.print.attribute.standard.DateTimeAtCreation;
 import javax.validation.constraints.Size;
 
@@ -54,6 +58,13 @@ public class User implements Serializable{
 	@Column(name="profile_image")
 	@Size(max = 200)
 	private String profile_image;
+	@Column(name="user_id",nullable=false)
+	 @OneToMany(targetEntity = Payments.class,cascade = CascadeType.ALL)
+		@JoinColumn(name="user_id",referencedColumnName ="id")
+		private Set payment;
+	 @OneToMany(targetEntity = Booking.class,cascade = CascadeType.ALL)
+		@JoinColumn(name="user_id",referencedColumnName ="id")
+		private Set booking;
 	public User() {
 		
 	}

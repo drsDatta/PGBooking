@@ -33,7 +33,7 @@ public class RoomController {
 		return this.roomExImpl.setRoom(roomRepository, room);
 	}
 	@RequestMapping("/getRoom/{id}")
-	public Room getUser(@PathVariable String id) {
+	public Room getRoom(@PathVariable String id) {
 		return this.roomExImpl.getRoomById(roomRepository, Integer.parseInt(id));
 	}
 	@DeleteMapping("/removeRoom/{id}")

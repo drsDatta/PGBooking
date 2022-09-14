@@ -38,12 +38,17 @@ public class Pg {
 	@Column(name="pincode",nullable = false)
 	@Size(max = 6, message = "This is required")
 	private int pincode;
+	//@Column(nullable=false)
 	 @OneToOne(cascade = CascadeType.ALL)
 	    @JoinColumn(name = "facility_id", referencedColumnName = "id")
 	    private Facility facility;
 	 @OneToMany(targetEntity = Room.class,cascade = CascadeType.ALL)
 		@JoinColumn(name="pg_id",referencedColumnName ="id")
 		private Set pg;
+	// @Column(nullable=false)
+	 @OneToMany(targetEntity = Booking.class,cascade = CascadeType.ALL)
+		@JoinColumn(name="Pg_id",referencedColumnName ="id")
+		private Set booking;
 	
 //	@ManyToOne()
 //    @JoinColumn(name="owner",nullable=false)

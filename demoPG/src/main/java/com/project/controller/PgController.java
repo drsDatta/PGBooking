@@ -29,7 +29,7 @@ public class PgController implements Serializable{
 		return this.pgExImpl.addPg(pgRepository, pg);
 	}
 	@RequestMapping("/showPg")
-	public List<Pg> listUser(){
+	public List<Pg> listPg(){
 		return this.pgExImpl.getPg(pgRepository);
 	}
 	

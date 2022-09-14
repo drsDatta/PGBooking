@@ -66,6 +66,7 @@ public class Facility {
 	@Size(max=1)
 	@Value("0")
 	private int laundry;
+	
 	public Facility() {
 		
 	}

@@ -40,7 +40,9 @@ public class Room {
 	private int status;
 	//private int pg_id;
 	 
-	
+	@OneToMany(targetEntity = Booking.class,cascade = CascadeType.ALL)
+	@JoinColumn(name="room_id",referencedColumnName ="id")
+	private Set booking;
 	public Room() {
 		
 	}
