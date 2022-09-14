@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 @Entity
 public class Owner implements Serializable{
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	//@Column(name="owner_id")
 	private int id;
 	

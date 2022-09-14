@@ -7,7 +7,6 @@
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
     <fullyQualifiedTypeName name="com.project.service.FacilityExService"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.project.dao.FacilityRepository"/>
     <fullyQualifiedTypeName name="com.project.service.FacilityExImpl"/>
     <fullyQualifiedTypeName name="com.project.entities.Facility"/>
@@ -17,4 +16,6 @@
     <fullyQualifiedTypeName name="com.project.dao.RoomRepository"/>
     <fullyQualifiedTypeName name="com.project.service.RoomExImpl"/>
     <fullyQualifiedTypeName name="com.project.entities.Room"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
 </qualifiedTypeNameHistroy>
